@@ -21,7 +21,7 @@ class Node {
 		Node<T>* m_left;
 		Node<T>* m_right;
 
-		int m_frequency;
+		int m_count;
 
 		const T m_data;
 };

@@ -3,19 +3,16 @@ CXXFLAGS = -Wall -g
 INC = -I./source/
 
 BSTTest: BSTTest.o BST.o
-	$(CXX) $(CXXFLAGS) $(INC) -o BSTTest BSTTest.o BST.o
+	$(CXX) $(CXXFLAGS) $(INC) -o BSTTest BSTTest.o BST.o Node.o
 
 BSTTest.o: test/BSTTest.cxx source/BST.h
 	$(CXX) $(CXXFLAGS) $(INC) -c test/BSTTest.cxx
 
-BST.o: source/BST.cxx source/BST.h 
+BST.o: source/BST.cxx source/BST.h source/Comparator.h Node.o
 	$(CXX) $(CXXFLAGS) $(INC) -c source/BST.cxx
 
 Node.o: source/Node.cxx source/Node.h
 	$(CXX) $(CXXFLAGS) $(INC) -c source/Node.cxx
-
-Comparator.o: source/Comparator.h
-	$(CXX) $(CXXFLAGS) $(INC) -c source/Comparator.h
 
 clean:
 	rm -rf BSTTest *.o
