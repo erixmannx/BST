@@ -11,15 +11,15 @@ class Node {
 
 		const T getData() const;
 
-		void incrmenent();
+		void increment();
 		void decrement();
 
-		Node* getLeft() const;
-		Node* getRight() const;
+		Node<T>* getLeft() const;
+		Node<T>* getRight() const;
 
 	private:
-		Node* m_left;
-		Node* m_right;
+		Node<T>* m_left;
+		Node<T>* m_right;
 
 		int m_frequency;
 

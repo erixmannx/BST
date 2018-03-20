@@ -8,11 +8,14 @@ BSTTest: BSTTest.o BST.o
 BSTTest.o: test/BSTTest.cxx source/BST.h
 	$(CXX) $(CXXFLAGS) $(INC) -c test/BSTTest.cxx
 
-BST.o: source/BST.cxx source/BST.h
+BST.o: source/BST.cxx source/BST.h 
 	$(CXX) $(CXXFLAGS) $(INC) -c source/BST.cxx
 
 Node.o: source/Node.cxx source/Node.h
 	$(CXX) $(CXXFLAGS) $(INC) -c source/Node.cxx
+
+Comparator.o: source/Comparator.h
+	$(CXX) $(CXXFLAGS) $(INC) -c source/Comparator.h
 
 clean:
 	rm -rf BSTTest *.o
