@@ -13,11 +13,13 @@ class BST {
 		void add(const T data);
 		bool find(const T data) const;
 
+		void print() const;
+
 	protected:
 		Node<T>* findDepthFirst(const T data) const;
-		#if 0
 		Node<T>* findBreadthFirst(const T data) const;
-		#endif
+
+		void printNode(const Node<T>* node, const int level) const;
 
 	private:
 		Node<T>* m_root;
