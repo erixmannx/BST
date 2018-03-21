@@ -17,13 +17,15 @@ class Node {
 		Node<T>* getLeft() const;
 		Node<T>* getRight() const;
 
+		void setLeft(Node<T>* node);
+		void setRight(Node<T>* node);
+
 	private:
 		Node<T>* m_left;
 		Node<T>* m_right;
 
 		int m_count;
-
-		const T m_data;
+		T m_data;
 };
 
 } } } }

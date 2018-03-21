@@ -20,7 +20,7 @@ class BST {
 			return m_comparator->compare(left, right);
 		}
 
-		const Node<T>* findNode(const Node<T>* node, const T data) const;
+		Node<T>* findNode(Node<T>* node, const T data) const;
 		void printNode(const Node<T>* node, const int level) const;
 
 		Node<T>* m_root;

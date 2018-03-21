@@ -3,8 +3,7 @@
 
 using namespace com::github::erixmannx::BST;
 
-template class BST<int>;
-static BST<int>* intTree = NULL;
+static BST<int>* intTree = new BST<int>();
 
 int main(int argc, char** argv) {
 	return 0;

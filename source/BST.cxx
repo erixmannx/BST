@@ -42,12 +42,12 @@ void BST<T>::add(const T data) {
 
 template<typename T>
 bool BST<T>::find(const T data) const {
-	Node<T>* node = findNode(m_root, data);
+	const Node<T>* node = findNode(m_root, data);
 	return (node != NULL) && (compare(data, node->getData()) == 0);
 }
 
 template<typename T>
-const Node<T>* BST<T>::findNode(const Node<T>* node, const T data) const {
+Node<T>* BST<T>::findNode(Node<T>* node, const T data) const {
 	int cmp = compare(data, node->getData());
 	if (cmp == 0) {
 		return node;
@@ -83,4 +83,7 @@ void BST<T>::printNode(const Node<T>* node, const int level) const {
 	printNode(node->getLeft(), level + 1);
 	printNode(node->getRight(), level + 1);
 }
+
+// move implementation to header to remove this requirement
+template class BST<int>;
 #endif

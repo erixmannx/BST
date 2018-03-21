@@ -44,4 +44,17 @@ template<typename T>
 Node<T>* Node<T>::getRight() const {
 	return m_left;
 }
+
+template<typename T>
+void Node<T>::setLeft(Node<T>* node) {
+	m_left = node;
+}
+
+template<typename T>
+void Node<T>::setRight(Node<T>* node) {
+	m_right = node;
+}
+
+// move implementation to header to remove this requirement
+template class Node<int>;
 #endif
