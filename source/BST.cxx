@@ -12,6 +12,7 @@ using namespace com::github::erixmannx::BST;
 template<typename T>
 BST<T>::BST() {
 	m_root = NULL;
+	m_comparator = new DefaultComparator<T>();
 }
 
 template<typename T>
@@ -19,11 +20,11 @@ void BST<T>::add(const T data) {
 	if (m_root == NULL) { 
 		m_root = new Node<T>(data);
 	} else {
-		Node<T>* node = findDepthFirst(m_root, data);
+		Node<T>* node = findNode(m_root, data);
 		if (node == NULL) {
 			// TODO throw here - should never happen
 		} else {
-			int cmp = m_comparator->compare(data, node->getData()); 
+			int cmp = compare(data, node->getData()); 
 			if (cmp == 0) {
 				node->increment();
 			} else {
@@ -41,24 +42,28 @@ void BST<T>::add(const T data) {
 
 template<typename T>
 bool BST<T>::find(const T data) const {
-	#if 1
-	Node<T>* node = findDepthFirst(m_root, data);
-	#else
-	Node<T>* node = findBreadthFirst(m_root, data);
-	#endif
-
-	return (node != NULL) && (m_comparator->compare(data, node->getData()) == 0);
+	Node<T>* node = findNode(m_root, data);
+	return (node != NULL) && (compare(data, node->getData()) == 0);
 }
 
 template<typename T>
-Node<T>* BST<T>::findDepthFirst(const T data) const {
-		
-}
+const Node<T>* BST<T>::findNode(const Node<T>* node, const T data) const {
+	int cmp = compare(data, node->getData());
+	if (cmp == 0) {
+		return node;
+	}	
 
-template<typename T>
-Node<T>* BST<T>::findBreadthFirst(const T data) const {
-	// TODO
-	return NULL;
+	if (cmp < 0) {
+		if (node->getLeft() != NULL) {
+			return findNode(node->getLeft(), data);
+		}
+	} else {
+		if (node->getRight() != NULL) {
+			return findNode(node->getRight(), data);
+		}
+	}
+
+	return node;
 }
 
 template<typename T>

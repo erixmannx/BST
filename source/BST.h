@@ -16,12 +16,13 @@ class BST {
 		void print() const;
 
 	protected:
-		Node<T>* findDepthFirst(const T data) const;
-		Node<T>* findBreadthFirst(const T data) const;
+		inline const int compare(const T left, const T right) const {
+			return m_comparator->compare(left, right);
+		}
 
+		const Node<T>* findNode(const Node<T>* node, const T data) const;
 		void printNode(const Node<T>* node, const int level) const;
 
-	private:
 		Node<T>* m_root;
 		Comparator<T>* m_comparator;
 };
