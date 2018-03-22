@@ -28,12 +28,12 @@ void BST<T>::add(const T data) {
 			if (cmp == 0) {
 				node->increment();
 			} else {
-				Node<T>* node = new Node<T>(data);
+				Node<T>* next = new Node<T>(data);
 
-				if (cmp < 1) {
-					node->setLeft(node);
+				if (cmp < 0) {
+					node->setLeft(next);
 				} else {
-					node->setRight(node);
+					node->setRight(next);
 				}
 			}
 		}
@@ -78,7 +78,7 @@ void BST<T>::printNode(const Node<T>* node, const int level) const {
 		return;
 	}
 
-	printf("L%d - %d\n", level, node->getData());
+	printf("L%d - C%d - %d\n", level, node->getCount(), node->getData());
 
 	printNode(node->getLeft(), level + 1);
 	printNode(node->getRight(), level + 1);

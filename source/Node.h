@@ -14,6 +14,8 @@ class Node {
 		void increment();
 		void decrement();
 
+		int getCount() const;
+
 		Node<T>* getLeft() const;
 		Node<T>* getRight() const;
 

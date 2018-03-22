@@ -9,7 +9,7 @@ using namespace com::github::erixmannx::BST;
 template<typename T>
 Node<T>::Node(const T data) {
 	m_data = data;
-	m_count = 0;
+	m_count = 1;
 
 	m_left = NULL;
 	m_right = NULL;
@@ -36,13 +36,18 @@ void Node<T>::decrement() {
 }
 
 template<typename T>
+int Node<T>::getCount() const {
+	return m_count;
+}
+
+template<typename T>
 Node<T>* Node<T>::getLeft() const {
 	return m_left;
 }
 
 template<typename T>
 Node<T>* Node<T>::getRight() const {
-	return m_left;
+	return m_right;
 }
 
 template<typename T>
